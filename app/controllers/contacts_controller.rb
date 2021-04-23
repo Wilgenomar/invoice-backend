@@ -2,6 +2,7 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = Contact.all
+
     render json: @contacts
   end
 
@@ -33,8 +34,8 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    @contacts = Product.all
-    @contact = Product.find(params[:id])
+    @contacts = Contact.all
+    @contact = Contact.find(params[:id])
     @contact.destroy
     render json: @contacts
   end
