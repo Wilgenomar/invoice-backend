@@ -25,6 +25,11 @@ class CustomersController < ApplicationController
     render json: @customer
   end
 
+  def search
+    @customers = Customer.select(:name, :id, :email, :id_number, :phone, :website, :address, :city, :state, :postal_code).where('name LIKE ?', "%#{params['search_query']}%") unless params['search_query'].blank?
+    render json: @customers
+  end
+
 
   def update
     @customer = Customer.find(params[:id])
